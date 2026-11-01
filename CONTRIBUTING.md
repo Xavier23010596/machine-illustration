@@ -22,7 +22,7 @@
 只需要 Node.js ≥ 18，不需要 `npm install`。
 
 ```bash
-git clone <THIS_REPO> machine-illustration
+git clone https://github.com/Xavier23010596/machine-illustration.git machine-illustration
 cd machine-illustration
 node --version          # 应 >= v18
 node scripts/build-prompt-pack.mjs --in examples/bopet/inventory.json --check

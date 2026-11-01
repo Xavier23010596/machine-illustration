@@ -2,7 +2,7 @@
 name: machine-illustration
 description: 把一台机器（设备/产线/仪器）转成可批量复用的成套科研插图：先梳理设备清单，再按"等距 3D 白底 / 专利线稿 / 爆炸图 / 剖切"四套风格锚写英文提示词，然后出图、挑图、登记 seed。用于工业设备图鉴、产线示意图、论文与专利附图、技术白皮书配图。触发词：设备示意图、机械插图、产线示意、科研绘图、等距 3D、专利线稿、爆炸图、剖切图、machine illustration、isometric equipment render。
 version: 1.0.0
-author: <YOUR_NAME>
+author: Xavier23010596
 license: MIT
 trigger:
   keywords:

@@ -110,7 +110,7 @@ node scripts/build-prompt-pack.mjs --in my-inventory.json --out out/ --styles 3d
 ### 作为 Agent Skill 安装
 
 ```bash
-git clone <THIS_REPO> machine-illustration
+git clone https://github.com/Xavier23010596/machine-illustration.git machine-illustration
 mkdir -p ~/.claude/skills/machine-illustration
 cp -r machine-illustration/SKILL.md machine-illustration/references machine-illustration/scripts \
       ~/.claude/skills/machine-illustration/
@@ -119,7 +119,7 @@ cp -r machine-illustration/SKILL.md machine-illustration/references machine-illu
 Windows（PowerShell）：
 
 ```powershell
-git clone <THIS_REPO> machine-illustration
+git clone https://github.com/Xavier23010596/machine-illustration.git machine-illustration
 $dest = "$env:USERPROFILE\.claude\skills\machine-illustration"
 New-Item -ItemType Directory -Force $dest
 Copy-Item .\machine-illustration\SKILL.md,.\machine-illustration\references,.\machine-illustration\scripts $dest -Recurse
