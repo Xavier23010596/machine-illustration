@@ -1,0 +1,47 @@
+# ---- 依赖与缓存 ----
+node_modules/
+.pnpm-store/
+.cache/
+.parcel-cache/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- 密钥 / 凭证（绝不入库）----
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+secrets.json
+credentials*
+token*
+
+# ---- 日志 ----
+*.log
+logs/
+npm-debug.log*
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 出图产物：体积大、含平台水印，不入库 ----
+# 注意：examples/bopet/prompt-pack.* 是刻意入库的案例，不要加进这里
+out/
+prompts/
+shots/
+renders/
+*.draft.png
+
+# ---- 本地覆盖配置 ----
+*.local.*
+*.local
+local.config.*

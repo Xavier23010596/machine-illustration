@@ -1,0 +1,112 @@
+name: Bug 反馈
+description: 脚本报错、校验误判、提示词生成异常，或出图结果与预期不符
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。提交前请先确认：
+
+        - 已读过 `README.md` 的「已知限制」，问题不在已知范围内；
+        - 已用 `--check` 复现过一次，知道是哪台设备、哪个字段出的问题；
+        - **本 Issue 不含任何厂商图纸、宣传素材、未公开工艺参数或 API 凭证**（截图请打码）。
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 脚本报错 / 崩溃
+        - 校验误判（该报的没报，或不该报的报了）
+        - 生成的提示词结构不对（缺段、串联、格式错）
+        - 出图结果不对（画成另一台机器、画风漂移）
+        - 文档与实际行为不一致
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 现象
+      description: 实际发生了什么？尽量一句话说清。
+      placeholder: 跑 --styles cut 时，D03 的 cutaway 是 false，但脚本没给任何提示，仍然生成了一条剖切提示词。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望
+      description: 你认为正确的行为是什么？
+      placeholder: 应该报 warning，说明 D03 没标 cutaway、内部结构描述不足。
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      description: 从零开始按步骤写；能附**脱敏后**的最小清单片段最好。
+      placeholder: |
+        1. 准备 2 台设备的 inventory.json，其中一台 cutaway=false
+        2. node scripts/build-prompt-pack.mjs --in inv.json --check --styles 3d,cut
+        3. 没有任何 warning
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本 / 提交
+      description: 技能版本（见 SKILL.md frontmatter 的 version）或提交哈希
+      placeholder: "1.0.0 / a1b2c3d"
+    validations:
+      required: true
+
+  - type: input
+    id: node
+    attributes:
+      label: Node 版本
+      description: 输出 `node --version`
+      placeholder: "v20.11.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 生图平台（仅"出图结果不对"时选）
+      description: 不同模型对同一提示词的反应差异很大，这项决定能否复现
+      multiple: false
+      options:
+        - 不涉及出图（脚本/文档问题）
+        - Midjourney
+        - Stable Diffusion / ComfyUI
+        - Flux
+        - DALL·E
+        - 即梦 / 可图 / 通义等国内模型
+        - 其他（在下方说明）
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: 报错输出 / 截图
+      description: 有则粘贴完整输出，没有写「无」。截图请先打码。
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 我已搜索现有 Issue，未找到重复
+          required: true
+        - label: 本 Issue 不含第三方图纸、照片或未公开工艺资料
+          required: true
+        - label: 本 Issue 不含任何 API key、token 或账号信息
+          required: true

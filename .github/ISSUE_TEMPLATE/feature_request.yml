@@ -1,0 +1,68 @@
+name: 功能请求
+description: 新增风格块、校验规则、参考文档或脚本能力
+title: "[Feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本项目刻意保持**零依赖、离线、单脚本**。以下类型的请求通常不会接受：
+        引入 npm 包 / 框架 / 在线字体；内置出图（调用某平台 API）；提交受版权保护的素材；
+        做精确工程制图（那该用 CAD）。
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 请求类型
+      options:
+        - 新增风格块（S5 及以后）
+        - 现有风格块的措辞调整
+        - 校验规则（新增或放宽）
+        - 参考文档补充
+        - 脚本能力（如批量重跑、格式转换）
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你要解决什么问题
+      description: 描述场景与具体错误，不要只描述解法。
+      placeholder: |
+        我的设备是压力容器类（球罐、换热器），S1 的白底等距图看不出内部管程，
+        S4 剖切又只能剖一个平面。我需要"半透明壳体"这种能同时看到内外的方式。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议做法
+      description: 有具体措辞或字段设计就写在这里；接受"我没有方案，只想说明问题"。
+      placeholder: |
+        新增 S5：壳体保留 30% 不透明度、内部构件实色，负向里加 "x-ray, wireframe"。
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 你验证过吗
+      description: |
+        如果已经实际跑过，写清：用了哪台设备、哪种模型、多少次、错在哪。
+        **不要附第三方图片**，用文字描述即可。
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 该请求不需要引入外部依赖或网络请求
+          required: true
+        - label: 该请求不涉及复制第三方素材、图纸或厂商机型
+          required: true
+        - label: 如涉及风格块改动，我理解需要在 PR 中标注 BREAKING 并说明理由
+          required: true
